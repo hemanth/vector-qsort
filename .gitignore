@@ -12,3 +12,10 @@ __pycache__/
 *.o
 .DS_Store
 vendor/
+node/include/
+node/build/
+node/node_modules/
+python/include/
+python/build/
+python/dist/
+python/*.egg-info/

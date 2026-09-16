@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import vsort from '../node/index.js';
+import vsort from '../index.js';
 
 test('vector-qsort: all typed array types ascending and descending', () => {
   const types = [

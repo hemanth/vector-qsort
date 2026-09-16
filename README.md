@@ -69,7 +69,7 @@ Science-backed benchmarks measured on Apple Silicon (ARM NEON) using high-resolu
 ### Node.js (vs V8 `TypedArray.prototype.sort()`)
 
 ```bash
-npm run bench
+cd node && npm run bench
 ```
 
 | Type | Size | Distribution | V8 (median) | vector-qsort | Speedup |
@@ -85,7 +85,7 @@ npm run bench
 ### Python (vs NumPy in-place `np.sort()`)
 
 ```bash
-python bench/python.bench.py
+cd python && python bench/bench_sort.py
 ```
 
 | Dtype | Size | Distribution | NumPy (median) | vector-qsort | Speedup |

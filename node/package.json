@@ -3,24 +3,28 @@
   "version": "0.1.0",
   "description": "Vectorized quicksort for TypedArrays using Google Highway SIMD.",
   "type": "module",
-  "main": "node/index.js",
-  "types": "node/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "types": "./node/index.d.ts",
-      "default": "./node/index.js"
+      "types": "./index.d.ts",
+      "default": "./index.js"
     }
   },
   "scripts": {
     "install": "cmake-js compile",
     "build": "cmake-js compile",
-    "test": "node --test test/node.test.js",
-    "bench": "node bench/node.bench.mjs"
+    "test": "node --test test/*.test.js",
+    "bench": "node bench/index.bench.mjs",
+    "prepack": "mkdir -p include && cp ../core/vqsort.h ./include/ && cp ../LICENSE . && cp ../README.md .",
+    "postpack": "rm -f LICENSE README.md"
   },
   "files": [
-    "core",
-    "node",
+    "binding.cc",
+    "index.js",
+    "index.d.ts",
     "CMakeLists.txt",
+    "include",
     "README.md",
     "LICENSE"
   ],

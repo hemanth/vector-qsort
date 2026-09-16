@@ -8,9 +8,13 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function loadNative() {
   const candidates = [
+    join(__dirname, 'build/Release/vector_qsort.node'),
+    join(__dirname, 'build/Debug/vector_qsort.node'),
+    join(__dirname, 'build/vector_qsort.node'),
     join(__dirname, '../build/Release/vector_qsort.node'),
     join(__dirname, '../build/Debug/vector_qsort.node'),
     join(__dirname, '../build/vector_qsort.node'),
+    join(__dirname, 'prebuilds', `${process.platform}-${process.arch}`, 'vector_qsort.node'),
     join(__dirname, '../prebuilds', `${process.platform}-${process.arch}`, 'vector_qsort.node')
   ];
   for (const path of candidates) {

@@ -16,9 +16,17 @@ dependencies = [
 
 [tool.scikit-build]
 cmake.build-type = "Release"
-wheel.packages = ["python/vector_qsort"]
+wheel.packages = ["vector_qsort"]
 cmake.args = [
     "-DHWY_ENABLE_TESTS=OFF",
     "-DHWY_ENABLE_EXAMPLES=OFF",
     "-DHWY_ENABLE_CONTRIB=ON"
+]
+sdist.include = [
+    "binding.cc",
+    "vector_qsort",
+    "CMakeLists.txt",
+    "README.md",
+    "LICENSE",
+    "include",
 ]
