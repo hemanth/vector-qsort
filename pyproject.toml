@@ -1,0 +1,24 @@
+[build-system]
+requires = ["scikit-build-core>=0.10", "nanobind>=2.0.0"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "vector-qsort"
+version = "0.1.0"
+description = "Vectorized quicksort for NumPy arrays using Google Highway SIMD."
+readme = "README.md"
+authors = [{ name = "Hemanth HM", email = "hemanth@h3manth.com" }]
+license = { text = "MIT" }
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+]
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+wheel.packages = ["python/vector_qsort"]
+cmake.args = [
+    "-DHWY_ENABLE_TESTS=OFF",
+    "-DHWY_ENABLE_EXAMPLES=OFF",
+    "-DHWY_ENABLE_CONTRIB=ON"
+]
