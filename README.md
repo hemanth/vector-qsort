@@ -95,6 +95,10 @@ cd python && python bench/bench_sort.py
 | `float64` | 100,000 | Random | 2.25 ms | **1.33 ms** | **1.70x** |
 | `float64` | 5,000,000 | Plateau | 39.40 ms | **18.04 ms** | **2.18x** |
 
+## Note on scalar sorts
+
+Modern scalar sorts like `driftsort` and `ipnsort` excel at generic types and presorted run-detection. `vector-qsort` is designed specifically for raw numeric throughput on contiguous buffers by saturating SIMD vector lanes.
+
 ## License
 
 MIT © [Hemanth.HM](https://h3manth.com)
