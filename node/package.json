@@ -15,9 +15,7 @@
     "install": "cmake-js compile",
     "build": "cmake-js compile",
     "test": "node --test test/*.test.js",
-    "bench": "node bench/index.bench.mjs",
-    "prepack": "mkdir -p include && cp ../core/vqsort.h ./include/ && cp ../LICENSE . && cp ../README.md .",
-    "postpack": "rm -f LICENSE README.md"
+    "bench": "node bench/index.bench.mjs"
   },
   "files": [
     "binding.cc",
