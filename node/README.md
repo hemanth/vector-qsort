@@ -1,14 +1,12 @@
 # vector-qsort
 
-Vectorized quicksort for TypedArrays and NumPy arrays using Google Highway SIMD.
+Vectorized quicksort for TypedArrays using Google Highway SIMD.
 
 ```bash
 npm install vector-qsort
-# or
-pip install vector-qsort
 ```
 
-## Quick start (JavaScript)
+## Quick start
 
 ```js
 import vsort from 'vector-qsort';
@@ -28,27 +26,9 @@ const sorted = vsort.sorted(f32);
 
 `vsort()` sorts a TypedArray in place using SIMD. `vsort.sorted()` returns a sorted copy. `vsort.async()` sorts off the main thread. That's the whole API.
 
-## Quick start (Python)
+Supports `Float32Array`, `Float64Array`, `Int32Array`, `Uint32Array`, `BigInt64Array`, `BigUint64Array`, `Int16Array`, and `Uint16Array`.
 
-```python
-import numpy as np
-import vector_qsort
-
-data = np.array([3.14, -1.5, 42.0, 0.0, -100.5, 2.71], dtype=np.float32)
-
-# In-place SIMD sort
-vector_qsort.sort(data)
-
-# Descending
-vector_qsort.sort(data, desc=True)
-
-# Non-mutating copy
-sorted_data = vector_qsort.sorted(data)
-```
-
-`sort()` sorts 1D contiguous arrays in place with zero copies. `sorted()` returns a sorted copy. Supports `float32`, `float64`, `int32`, `uint32`, `int64`, `uint64`, `int16`, and `uint16`.
-
-## Off-thread sorting (Node.js)
+## Off-thread sorting
 
 ```js
 import vsort from 'vector-qsort';
@@ -64,12 +44,10 @@ Sorts large buffers in background worker threads without interrupting the Node.j
 
 ## Benchmarks
 
-Science-backed benchmarks measured on Apple Silicon (ARM NEON) using high-resolution monotonic clocks over 50 iterations with pre-allocated samples.
-
-### Node.js (vs V8 `TypedArray.prototype.sort()`)
+Measured on Apple Silicon (ARM NEON) vs V8's native `TypedArray.prototype.sort()` over 50 iterations:
 
 ```bash
-cd node && npm run bench
+npm run bench
 ```
 
 | Type | Size | Distribution | V8 (median) | vector-qsort | Speedup |
@@ -81,19 +59,6 @@ cd node && npm run bench
 | `Float64Array` | 1,000,000 | Random | 65.56 ms | **17.19 ms** | **3.81x** |
 | `Float64Array` | 5,000,000 | Random | 360.88 ms | **95.42 ms** | **3.78x** |
 | `Int32Array` | 1,000,000 | Random | 15.42 ms | **8.73 ms** | **1.77x** |
-
-### Python (vs NumPy in-place `np.sort()`)
-
-```bash
-cd python && python bench/bench_sort.py
-```
-
-| Dtype | Size | Distribution | NumPy (median) | vector-qsort | Speedup |
-|---|---|---|---|---|---|
-| `float32` | 100,000 | Random | 1.14 ms | **0.73 ms** | **1.57x** |
-| `float32` | 5,000,000 | Random | 81.97 ms | **50.39 ms** | **1.63x** |
-| `float64` | 100,000 | Random | 2.25 ms | **1.33 ms** | **1.70x** |
-| `float64` | 5,000,000 | Plateau | 39.40 ms | **18.04 ms** | **2.18x** |
 
 ## Note on scalar sorts
 
