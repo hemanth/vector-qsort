@@ -1,4 +1,4 @@
-import vsort from '../src/index.js';
+import vsort from '../node/index.js';
 
 // Science-backed benchmarking harness
 function generateData(type, size, distribution) {

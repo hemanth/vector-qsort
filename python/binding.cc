@@ -1,6 +1,6 @@
 #include <nanobind/nanobind.h>
 #include <nanobind/ndarray.h>
-#include "vqsort_core.h"
+#include "vqsort.h"
 
 namespace nb = nanobind;
 

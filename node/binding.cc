@@ -1,5 +1,5 @@
 #include <napi.h>
-#include "vqsort_core.h"
+#include "vqsort.h"
 
 namespace {
 

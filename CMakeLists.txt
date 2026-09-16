@@ -22,10 +22,12 @@ else()
   FetchContent_MakeAvailable(highway)
 endif()
 
+# Core C++ header directory
+include_directories("${CMAKE_CURRENT_SOURCE_DIR}/core")
+
 # Node-API Target (when compiled with cmake-js)
 if(DEFINED CMAKE_JS_INC)
   include_directories(${CMAKE_JS_INC})
-  include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
 
   execute_process(
     COMMAND node -p "require('node-addon-api').include_dir"
@@ -36,7 +38,7 @@ if(DEFINED CMAKE_JS_INC)
   include_directories(${NODE_ADDON_API_DIR})
 
   add_library(vector_qsort SHARED
-    src/node_binding.cc
+    node/binding.cc
     ${CMAKE_JS_SRC}
   )
 
@@ -62,9 +64,8 @@ find_package(Python 3.9 COMPONENTS Interpreter Development.Module QUIET)
 if(Python_FOUND)
   find_package(nanobind CONFIG QUIET)
   if(nanobind_FOUND)
-    include_directories("${CMAKE_CURRENT_SOURCE_DIR}/src")
     nanobind_add_module(_vector_qsort
-      python/py_binding.cc
+      python/binding.cc
     )
     target_link_libraries(_vector_qsort PRIVATE
       hwy
