@@ -99,6 +99,10 @@ cd python && python bench/bench_sort.py
 
 Modern scalar sorts like `driftsort` and `ipnsort` excel at generic types and presorted run-detection. `vector-qsort` is designed specifically for raw numeric throughput on contiguous buffers by saturating SIMD vector lanes.
 
+## Playground
+
+Interactive SIMD visualizer & benchmark: [hemanth.github.io/vector-qsort](https://hemanth.github.io/vector-qsort/)
+
 ## License
 
 MIT © [Hemanth.HM](https://h3manth.com)
